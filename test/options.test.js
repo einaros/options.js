@@ -16,6 +16,12 @@ describe('Options', function() {
       option.value.a.should.be.ok;
       option.value.b.should.be.ok;
     })
+    it('does nothing when arguments are undefined', function() {
+      var option = new Options({a: true, b: false}); 
+      option.merge(undefined);
+      option.value.a.should.be.ok;
+      option.value.b.should.not.be.ok;
+    })
     it('cannot set values that werent already there', function() {
       var option = new Options({a: true, b: false}); 
       option.merge({c: true});
@@ -26,6 +32,17 @@ describe('Options', function() {
       var caughtException = false;
       try {
         option.merge({}, ['a', 'b', 'c']); 
+      }
+      catch (e) {
+        caughtException = e.toString() == 'Error: options a, b and c must be defined'; 
+      }
+      caughtException.should.be.ok;
+    })
+    it('can require certain options to be defined, when options are undefined', function() {
+      var option = new Options({a: true, b: false, c: 3}); 
+      var caughtException = false;
+      try {
+        option.merge(undefined, ['a', 'b', 'c']); 
       }
       catch (e) {
         caughtException = e.toString() == 'Error: options a, b and c must be defined'; 
