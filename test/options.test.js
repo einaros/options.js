@@ -54,6 +54,15 @@ describe('Options', function() {
       option.merge().should.eql(option);
     })
   })
+  describe('#copy', function() {
+    it('returns a new object with the indicated options', function() {
+      var option = new Options({a: true, b: false, c: 3}); 
+      var obj = option.copy(['a', 'c']); 
+      obj.a.should.be.ok;
+      obj.c.should.eql(3);
+      (typeof obj.b).should.eql('undefined');
+    })
+  })
   describe('#value', function() {
     it('can be enumerated', function() {
       var option = new Options({a: true, b: false}); 
