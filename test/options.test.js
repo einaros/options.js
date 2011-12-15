@@ -49,6 +49,10 @@ describe('Options', function() {
       }
       caughtException.should.be.ok;
     })
+    it('returns "this"', function() {
+      var option = new Options({a: true, b: false, c: 3}); 
+      option.merge().should.eql(option);
+    })
   })
   describe('#value', function() {
     it('can be enumerated', function() {
