@@ -21,6 +21,17 @@ describe('Options', function() {
       option.merge({c: true});
       (typeof option.value.c).should.eql('undefined');
     })
+    it('can require certain options to be defined', function() {
+      var option = new Options({a: true, b: false, c: 3}); 
+      var caughtException = false;
+      try {
+        option.merge({}, ['a', 'b', 'c']); 
+      }
+      catch (e) {
+        caughtException = e.toString() == 'Error: options a, b and c must be defined'; 
+      }
+      caughtException.should.be.ok;
+    })
   })
   describe('#value', function() {
     it('can be enumerated', function() {
