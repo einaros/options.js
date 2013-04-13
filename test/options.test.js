@@ -99,6 +99,27 @@ describe('Options', function() {
         done();
       });
     })
+
+    it('reads and merges config from a bad file', function() {
+      var option = new Options({a: true, b: true});
+      try {
+        option.read(__dirname + '/fixtures/bad.conf');
+      } catch (err) {
+        expect(err.name).to.equal('SyntaxError');
+      }
+      expect(option.value.a).to.equal(true);
+      expect(option.value.b).to.equal(true);
+    })
+
+    it('asynchronously reads and merges config from a bad file when a callback is passed', function(done) {
+      var option = new Options({a: true, b: true});
+      option.read(__dirname + '/fixtures/bad.conf', function(err) {
+        expect(err.name).to.equal('SyntaxError');
+        expect(option.value.a).to.equal(true);
+        expect(option.value.b).to.equal(true);
+        done();
+      });
+    })
   })
 
   describe('#reset', function() {
