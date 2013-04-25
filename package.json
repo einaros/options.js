@@ -16,6 +16,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "mocha": "latest",
+    "mocha": "latest"
   }
 }
