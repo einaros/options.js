@@ -93,6 +93,17 @@ describe('Options', function() {
     });
   });
 
+  describe('#isDefinedAndNonNull', function() {
+    it('returns true if the named value is defined and non-null', function() {
+      var option = new Options({a: undefined});
+      assert.strictEqual(false, option.isDefinedAndNonNull('a'));
+      option.merge({a: null});
+      assert.strictEqual(false, option.isDefinedAndNonNull('a'));
+      option.merge({a: 2});
+      assert.strictEqual(true, option.isDefinedAndNonNull('a'));
+    });
+  });
+
   describe('#read', function() {
     it('reads and merges config from a file', function() {
       var option = new Options({a: true, b: true});
