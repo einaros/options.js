@@ -1,6 +1,7 @@
 {
   "author": "Einar Otto Stangvik <einaros@gmail.com> (http://2x.io)",
   "name": "options",
+  "license": "MIT",
   "description": "A very light-weight in-code option parsers for node.js.",
   "version": "0.0.6",
   "repository": {
