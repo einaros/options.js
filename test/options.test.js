@@ -65,6 +65,14 @@ describe('Options', function() {
       assert.strictEqual(4, obj.c);
       assert.strictEqual('undefined', typeof obj.b);
     });
+    it('returns all options if no parameters passed', function() {
+      var option = new Options({a: true, b: false, c: 3});
+      option.merge({c: 4});
+      var obj = option.copy();
+      assert.strictEqual(true, obj.a);
+      assert.strictEqual(false, obj.b);
+      assert.strictEqual(4, obj.c);
+    });
   });
 
   describe('#value', function() {
