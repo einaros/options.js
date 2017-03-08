@@ -17,5 +17,6 @@
   "dependencies": {},
   "devDependencies": {
     "mocha": "latest"
-  }
+  },
+  "license": "MIT"
 }
