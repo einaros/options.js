@@ -3,6 +3,7 @@
   "name": "options",
   "description": "A very light-weight in-code option parsers for node.js.",
   "version": "0.0.6",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/einaros/options.js.git"
